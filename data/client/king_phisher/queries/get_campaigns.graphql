@@ -1,0 +1,34 @@
+# retrieve information about all the campaigns
+query getCampaigns($cursor: String, $page: Int) {
+  db {
+    campaigns(first: $page, after: $cursor) {
+      edges {
+        node {
+          id
+          created
+          description
+          expiration
+          name
+          company {
+            name
+          }
+          campaignType {
+            name
+          }
+          messages {
+            total
+          }
+          user {
+            name
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      total
+    }
+  }
+}

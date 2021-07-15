@@ -1,0 +1,208 @@
+{
+  "context": {
+    "email": {
+      "tokens": {
+        "calendar_invite": {
+          "all_day": null,
+          "location": null,
+          "start": null,
+          "summary": null
+        },
+        "campaign": {
+          "id": null,
+          "name": null
+        },
+        "client": {
+          "company_name": null,
+          "department": null,
+          "email_address": null,
+          "first_name": null,
+          "last_name": null,
+          "message_id": null
+        },
+        "inline_image(": null,
+        "message": {
+          "attachment": null,
+          "importance": null,
+          "recipient": {
+            "bcc": null,
+            "cc": null,
+            "field": null,
+            "to": null
+          },
+          "sensitivity": null,
+          "subject": null,
+          "template": null,
+          "type": null
+        },
+        "message_type": null,
+        "sender": {
+          "email": null,
+          "friendly_alias": null,
+          "reply_to": null
+        },
+        "tracking_dot_image_tag": null,
+        "uid": null,
+        "url": {
+          "tracking_dot": null,
+          "webserver": null,
+          "webserver_raw": null
+        }
+      }
+    },
+    "page": {
+      "tokens": {
+        "client": {
+          "address": null,
+          "campaign": {
+            "created": null,
+            "credential_count": null,
+            "credential_regex_mfa_token": null,
+            "credential_regex_password": null,
+            "credential_regex_username": null,
+            "expiration": null,
+            "has_expired": null,
+            "id": null,
+            "max_credentials": null,
+            "message_count": null,
+            "name": null,
+            "visit_count": null
+          },
+          "credential_count": null,
+          "company": {
+            "name": null,
+            "url_email": null,
+            "url_main": null,
+            "url_remote_access": null
+          },
+          "email_address": null,
+          "first_name": null,
+          "is_trained": null,
+          "last_name": null,
+          "message_id": null,
+          "visit_count": null,
+          "visit_id": null
+        },
+        "embed_youtube_video(": null,
+        "make_csrf_page(": null,
+        "make redirect_page(": null,
+        "request": {
+          "credentials": {
+            "mfa_token": null,
+            "password": null,
+            "regex_validated": null,
+            "username": null
+          },
+          "command": null,
+          "cookies": null,
+          "headers": null,
+          "parameters": null,
+          "user_agent": null
+        },
+        "server": {
+          "address": null,
+          "hostname": null,
+          "port": null
+        },
+        "validate_credential(": null,
+        "validate_credential_fields(": null
+      }
+    }
+  },
+  "global": {
+    "filters": [
+      "abs",
+      "attr(",
+      "batch(",
+      "capitalize",
+      "center",
+      "decode(",
+      "default",
+      "dictsort",
+      "encode(",
+      "escape",
+      "filesizeformat",
+      "first",
+      "float",
+      "forceescape",
+      "format(",
+      "groupby(",
+      "hash(",
+      "indent",
+      "int",
+      "join",
+      "last",
+      "length",
+      "list",
+      "lower",
+      "map(",
+      "pprint",
+      "random",
+      "replace(",
+      "reverse",
+      "round",
+      "safe",
+      "slice(",
+      "sort",
+      "string",
+      "striptags",
+      "sum",
+      "title",
+      "trim",
+      "truncate",
+      "upper",
+      "urlencode",
+      "urlize",
+      "wordcount",
+      "wordwrap",
+      "xmlattr",
+      "strftime(",
+      "timedelta(",
+      "tomorrow",
+      "next_week",
+      "next_month",
+      "next_year",
+      "yesterday",
+      "last_week",
+      "last_month",
+      "last_year",
+      "cardinalize",
+      "ordinalize",
+      "pluralize",
+      "singularize",
+      "possessive"
+    ],
+    "tests": [
+      "callable",
+      "defined",
+      "divisibleby(",
+      "equalto(",
+      "escaped",
+      "even",
+      "iterable",
+      "lower",
+      "mapping",
+      "none",
+      "number",
+      "odd",
+      "sameas(",
+      "sequence",
+      "string",
+      "undefined",
+      "upper"
+    ],
+    "tokens": {
+      "dict(": null,
+      "fetch(": null,
+      "libsum": null,
+      "parse_user_agent(": null,
+      "random_integer(": null,
+      "range(": null,
+      "time": {
+        "local": null,
+        "utc": null
+      },
+      "version": null
+    }
+  }
+}

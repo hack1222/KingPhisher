@@ -1,0 +1,156 @@
+#
+# King-Phisher Server Configuration
+#
+# Configuration options can also be loaded from other files using:
+#   !include path/to/file.yml
+# This allows the main file to be broken up into smaller parts if necessary
+
+logging:
+  console:
+    # Whether or not to enable console-based logging and use the configuration options within this section
+    enabled: true
+    # See https://docs.python.org/3/library/logging.html#logrecord-attributes for available attributes
+    format: '%(levelname)s %(message)s'
+    # Available levels: FATAL, ERROR, WARNING, INFO, DEBUG
+    level: warning
+
+  file:
+    # Whether or not to enable file-based logging and use the configuration options within this section
+    enabled: true
+    # See https://docs.python.org/3/library/logging.html#logrecord-attributes for available attributes
+    format: '%(asctime)s %(name)-50s %(levelname)-8s %(message)s'
+    # Available levels: FATAL, ERROR, WARNING, INFO, DEBUG
+    level: warning
+    # Location to store the log file
+    path: /var/log/king-phisher.log
+
+server:
+  # Bind address information, multiple ports can be specified through additional entries under "addresses"
+  addresses:
+    # bind to port 80 on all IPv4 interfaces without SSL (http)
+    - host: 0.0.0.0
+      port: 80
+      ssl: false
+    # Bind to port 443 on all IPv4 interfaces with SSL (https)
+    #- host: 0.0.0.0
+    #  port: 443
+    #  ssl: true
+
+  # Server RPC authentication related settings
+  #authentication:
+  #  # How long to cache authentication information in the server process
+  #  cache_timeout: 10m
+  #  # Require authenticating users to be a member of the specified group
+  #  group: king-phisher
+  #  # The service to use for PAM authentication
+  #  pam_service: sshd
+  #  # How long an authenticated RPC session should be valid for after no
+  #  # requests have been received
+  #  session_timeout: 30m
+
+  # A header to retrieve the client's IP from, useful when a proxy is in place
+  #client_ip_header: X-Real-IP
+
+  # The name of the cookie used to track users
+  cookie_name: KPID
+
+  # Specify an additional search path for server data files
+  #data_path: /opt/king-phisher/data/server
+
+  # The SQLite3 database file to use, the folder needs write permissions
+  # WARNING: SQLite3 is not fully supported as of version 0.1.6, see
+  # https://github.com/securestate/king-phisher/wiki/Database#sqlite for more
+  # details
+  database: sqlite:////var/king-phisher/king-phisher.db
+
+  # The PostgreSQL database to use
+  #database: postgresql://user:pass@localhost/king_phisher
+
+  # Fork the server process into the background
+  fork: true
+
+  geoip:
+    # The location of the GeoLite2 City database
+    database: /var/king-phisher/GeoLite2-City.mmdb
+
+  # Additional headers to include in HTTP responses
+  headers:
+    - "Referrer-Policy: no-referrer"
+    - "X-Content-Type-Options: nosniff"
+    - "X-Frame-Options: DENY"
+    - "X-XSS-Protection: 1; mode=block"
+
+  # Let's Encrypt integration settings, requires that certbot is installed
+  #letsencrypt:
+  #  # Optionally specify the path to the certbot binary, otherwise search
+  #  # $PATH for it
+  #  certbot_path: /usr/local/bin/certbot
+  #  # Directory to store Let's Encrypt data to, must be writeable by the King
+  #  # Phisher server process
+  #  data_path: /var/king-phisher/letsencrypt
+  #  # Recursively change the owner of the data path when setuid is enabled
+  #  chown_data_path: true
+
+  # Hostnames to provide to the client for auto completion
+  #hostnames:
+  #  - king-phisher.com
+
+  # Set a file to write the PID to
+  pid_file: /var/run/king-phisher.pid
+
+  # Add additional search paths for plugin directories
+  #plugin_directories:
+  #  - /some/plugin/path
+  # Auto install server plugin Python requirements
+  plugin_install_requirements: true
+  # Library path for plugin dependencies
+  plugin_library_path: /var/king-phisher/lib
+  # List the plugins that need to be enabled
+  #plugins:
+  #  # The plugin to enable's name
+  #  some_plugin:
+  #    # An option specific to this particular plugin
+  #    value_for_some_plugin: true
+
+  # Require an ID associated with a campaign to load pages
+  require_id: true
+
+  rest_api:
+    enabled: false
+    # Networks which are authorized to use the REST API
+    networks:
+      - 10.0.0.0/8
+      - 127.0.0.0/8
+      - 172.16.0.0/12
+      - 192.168.0.0/16
+    # When null the token will be randomized at run time
+    token: null
+
+  # Configure the server header value
+  #server_header: Apache/2.4.9 (Unix)
+
+  # Set the opened timestamp on the first visit if it's null
+  set_message_opened_on_visit: true
+
+  # Drop privileges to the specified user
+  setuid_username: nobody
+
+  # Default SSL certificate settings
+  #ssl_cert: /path/to/ssl.crt
+  #ssl_key: /path/to/ssl.key
+  # Hostname specific SSL certificates can be added below
+  #ssl_hosts:
+  #  - host: www.king-phisher.com
+  #    ssl_cert: /path/to/www.king-phisher.com/ssl.crt
+  #    ssl_key: /path/to/www.king-phisher.com/ssl.key
+
+  # Configure the image file name used to track opened emails
+  tracking_image: email_logo_banner.gif
+
+  # Use subfolders in the web_root which correspond to server hostnames, for
+  # example if the server's hostname is king-phisher.lan, then the web root for
+  # http://king-phisher.lan would be /var/www/king-phisher.lan
+  vhost_directories: false
+
+  # The root directory from which page content and templates are served from
+  web_root: /var/www

@@ -1,0 +1,90 @@
+{#
+  This file can be placed in the web root to show what variables and filters are
+  available.
+#}
+# Client Variables
+client.address:           {{ client.address }}
+{% if client.message_id is defined %}
+
+## Client Session Variables
+client.company_name:      {{ client.company_name }}
+client.email_address:     {{ client.email_address }}
+client.first_name:        {{ client.first_name }}
+client.last_name:         {{ client.last_name }}
+client.is_trained:        {{ client.is_trained }}
+client.message_id:        {{ client.message_id }}
+client.credential_count:  {{ client.credential_count }}
+client.visit_count:       {{ client.visit_count }}
+client.visit_id:          {{ client.visit_id }}
+{% endif %}
+{% if client.campaign is defined %}
+
+### Client Session Campaign Variables
+client.campaign.id:                {{ client.campaign.id }}
+client.campaign.name:              {{ client.campaign.name }}
+client.campaign.created:           {{ client.campaign.created }}
+client.campaign.expiration:        {{ client.campaign.expiration }}
+client.campaign.has_expired:       {{ client.campaign.has_expired }}
+client.campaign.message_count:     {{ client.campaign.message_count }}
+client.campaign.visit_count:       {{ client.campaign.visit_count }}
+client.campaign.credential_count:  {{ client.campaign.credential_count }}
+{% endif %}
+{% if client.company is defined %}
+
+### Client Session Company Variables
+client.company.name:               {{ client.company.name }}
+client.company.url_email:          {{ client.company.url_email }}
+client.company.url_main:           {{ client.company.url_main }}
+client.company.url_remote_access:  {{ client.company.url_remote_access }}
+{% endif %}
+
+## Request Variables
+request.command         {{ request.command }}
+{% if request.cookies %}
+request.cookies:
+{% for key, value in request.cookies.items() %}
+    {{ key }} = {{ value }}
+{% endfor %}
+{% else %}
+request.cookies:        N/A
+{% endif %}
+{% if request.parameters %}
+request.parameters:
+{% for key, value in request.parameters.items() %}
+    {{ key }} = {{ value }}
+{% endfor %}
+{% else %}
+request.parameters:     N/A
+{% endif %}
+{% if request.user_agent %}
+
+{% if request.credentials is defined %}
+### Request Credentials Variables
+request.credentials.username:   {{ request.credentials.username }}
+request.credentials.password:   {{ request.credentials.password }}
+request.credentials.mfa_token:  {{ request.credentials.mfa_token }}
+{% endif %}
+
+### Request User Agent Information
+request.user_agent:     {{ request.user_agent }}
+{% set ua_info = parse_user_agent(request.user_agent) %}
+os_name:                {{ ua_info.os_name }}
+os_version:             {{ ua_info.os_version }}
+os_arch:                {{ ua_info.os_arch }}
+{% endif %}
+
+# Server Variables
+server.address:         {{ server.address }}
+server.hostname:        {{ server.hostname }}
+
+# Time Variables
+time.local:             {{ time.local }}
+time.utc:               {{ time.utc }}
+
+## Time Filters
+yesterday:              {{ time.local | yesterday }}
+tomorrow:               {{ time.local | tomorrow }}
+strftime:               {{ time.local | strftime('%A, %d %B %Y %I:%M%p') }}
+
+# Miscellaneous Variables
+version:                {{ version }}

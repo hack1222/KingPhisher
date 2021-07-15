@@ -1,0 +1,30 @@
+# retrieve a campaign by it's ID
+query getCampaign($id: String!) {
+  db {
+    campaign(id: $id) {
+      id
+      created
+      name
+      description
+      expiration
+      maxCredentials
+
+      credentialRegexUsername
+      credentialRegexPassword
+      credentialRegexMfaToken
+
+      campaignType {
+        id
+        name
+      }
+      company {
+        id
+        name
+      }
+      user {
+        id
+        name
+      }
+    }
+  }
+}
