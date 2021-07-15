@@ -1,0 +1,20 @@
+inicio del programa 
+./KingPhisher 
+
+como instalarlo 
+git clone https://github.com/rsmusllp/king-phisher
+
+Use el comando cd para ingresar a los directorios de herramientas y king-phisher 
+
+Utilice el comando bash install.sh para instalar las dependencias de la herramienta
+
+
+Para instalar las dependencias completas, use el comando pipenv install
+
+
+Las dependencias han sido instaladas correctamente
+A continuación, use el comando sudo systemctl start king-phisher.service para iniciar el servidor king-phisher.sudo systemctl
+
+
+El servidor king-phisher se inició correctamente
+Ahora, use el comando ./KingPhisher para iniciar la herramienta
